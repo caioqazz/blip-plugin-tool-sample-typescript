@@ -70,10 +70,7 @@ function App() {
             }}
           >
             {isHttp && !isFormHttpFilled ? (
-              <CommandForm
-                style={{ padding: '100px' }}
-                handleSubmit={fillHeader}
-              />
+              <CommandForm handleSubmit={fillHeader} />
             ) : (
               <MainPage
                 service={!isHttp ? ApplicationService : AxiosService}

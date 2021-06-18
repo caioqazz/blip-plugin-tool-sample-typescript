@@ -3,15 +3,15 @@ import { v4 as uuidv4 } from 'uuid'
 import { AxiosCommomService } from './AxiosCommomService'
 
 export class AxiosService {
-  static headers
-  static url
+  static headers: Object
+  static url: string
 
-  static init(key, url) {
-    this.headers = {
+  static init(key: string, url: string) {
+    AxiosService.headers = {
       'Content-Type': 'application/json',
       Authorization: key,
     }
-    this.url = url
+    AxiosService.url = url
   }
 
   static getThreads = async () => {
@@ -23,8 +23,8 @@ export class AxiosService {
     try {
       const {
         data: { resource: items },
-      } = await axios.post(this.url, body, {
-        headers: this.headers,
+      } = await axios.post(AxiosService.url, body, {
+        headers: AxiosService.headers,
       })
       return items.items
     } catch (error) {
@@ -44,8 +44,8 @@ export class AxiosService {
         data: {
           resource: { items },
         },
-      } = await axios.post(this.url, body, {
-        headers: this.headers,
+      } = await axios.post(AxiosService.url, body, {
+        headers: AxiosService.headers,
       })
 
       return items
@@ -65,8 +65,8 @@ export class AxiosService {
         data: {
           resource: { items },
         },
-      } = await axios.post(this.url, body, {
-        headers: this.headers,
+      } = await axios.post(AxiosService.url, body, {
+        headers: AxiosService.headers,
       })
       const application = items.find((e) => e.name === 'Application')
       return { ...application, shortName: application.caller.split('@')[0] }

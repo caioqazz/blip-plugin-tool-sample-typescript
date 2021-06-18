@@ -9,7 +9,7 @@ export class CommomService {
   static setHeight = (height) =>
     IframeMessageProxy.sendMessage({ action: 'heightChange', content: height })
 
-  static showSuccessToast = (message) =>
+  static showSuccessToast = (message: string) =>
     IframeMessageProxy.sendMessage({
       action: 'toast',
       content: {
@@ -18,7 +18,7 @@ export class CommomService {
       },
     })
 
-  static showErrorToast = (message) =>
+  static showErrorToast = (message: string) =>
     IframeMessageProxy.sendMessage({
       action: 'toast',
       content: {
@@ -27,13 +27,13 @@ export class CommomService {
       },
     })
 
-  static withLoading = async (func) => {
-    this.startLoading()
+  static withLoading = async (func: Function) => {
+    CommomService.startLoading()
 
     try {
       return await func()
     } finally {
-      this.stopLoading()
+      CommomService.stopLoading()
     }
   }
 }

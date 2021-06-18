@@ -5,23 +5,23 @@ import { BlipTabs } from 'blip-toolkit'
 import PropTypes from 'prop-types'
 import { sortData } from './util'
 
-const tableContactsModel = [
+const tableContactsModel: Array<Object> = [
   { label: 'Name', key: 'name' },
   { label: 'Group', key: 'group' },
   { label: 'Identity', key: 'identity' },
   { label: 'Source', key: 'source' },
 ]
 
-const tableThreadsModel = [
+const tableThreadsModel: Array<Object> = [
   { label: 'Identity', key: 'identity' },
   { label: 'Last Message', key: 'lastMessage' },
   { label: 'Unread Messages', key: 'unreadMessages' },
 ]
 
 function MainPage({ service, commomService }) {
-  const [application, setApplication] = useState({})
-  const [contacts, setContacts] = useState([])
-  const [threads, setThreads] = useState([])
+  const [application, setApplication] = useState<Object>({})
+  const [contacts, setContacts] = useState<Array<any>>([])
+  const [threads, setThreads] = useState<Array<any>>([])
 
   const fetchApi = async () => {
     setContacts(await service.getContacts())
@@ -60,7 +60,6 @@ function MainPage({ service, commomService }) {
           canSelect={false}
           bodyHeight="400px"
           selectedItems={[]}
-          sort={{}}
           onSortSet={(item) => {
             sortData(contacts, item)
           }}
@@ -77,7 +76,6 @@ function MainPage({ service, commomService }) {
           canSelect={false}
           bodyHeight="400px"
           selectedItems={[]}
-          sort={{}}
           onSortSet={(item) => {
             sortData(contacts, item)
           }}

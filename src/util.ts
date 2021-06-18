@@ -1,5 +1,5 @@
-export const sortData = (data, sort) => {
-  if ((data !== undefined) & (data.length > 1)) {
+export const sortData = (data: Array<any>, sort: any): Array<any> => {
+  if (data !== undefined && data.length > 1) {
     data.sort(
       sort.order === 'asc'
         ? (a, b) =>
